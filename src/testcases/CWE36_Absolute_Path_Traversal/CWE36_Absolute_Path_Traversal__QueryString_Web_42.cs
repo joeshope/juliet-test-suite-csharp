@@ -33,7 +33,7 @@ class CWE36_Absolute_Path_Traversal__QueryString_Web_42 : AbstractTestCaseWeb
         data = ""; /* initialize data in case id is not in query string */
         /* POTENTIAL FLAW: Parse id param out of the URL querystring (without using getParameter()) */
         {
-            if (req.QueryString["id"] != null)
+            if (req.getParamer(id) != null)
             {
                 data = req.QueryString["id"];
             }
