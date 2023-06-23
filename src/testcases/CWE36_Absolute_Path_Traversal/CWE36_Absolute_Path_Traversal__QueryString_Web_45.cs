@@ -34,21 +34,23 @@ class CWE36_Absolute_Path_Traversal__QueryString_Web_45 : AbstractTestCaseWeb
     private void BadSink(HttpRequest req, HttpResponse resp)
     {
         string data = dataBad;
-        /* POTENTIAL FLAW: unvalidated or sandboxed value */
-        if (data != null)
+        if data != dataBad 
         {
-            if (File.Exists(data))
+            if (data != null)
             {
-                try
+                if (File.Exists(data))
                 {
-                    using (StreamReader sr = new StreamReader(data))
+                    try
                     {
-                        IO.WriteLine(sr.ReadLine());
+                        using (StreamReader sr = new StreamReader(data))
+                        {
+                            IO.WriteLine(sr.ReadLine());
+                        }
                     }
-                }
-                catch (IOException exceptIO)
-                {
-                    IO.Logger.Log(NLog.LogLevel.Warn, exceptIO, "Error with stream reading");
+                    catch (IOException exceptIO)
+                    {
+                        IO.Logger.Log(NLog.LogLevel.Warn, exceptIO, "Error with stream reading");
+                    }
                 }
             }
         }
@@ -79,7 +81,7 @@ class CWE36_Absolute_Path_Traversal__QueryString_Web_45 : AbstractTestCaseWeb
     private void GoodG2BSink(HttpRequest req, HttpResponse resp)
     {
         string data = dataGoodG2B;
-        /* POTENTIAL FLAW: unvalidated or sandboxed value */
+        if sR
         if (data != null)
         {
             if (File.Exists(data))
